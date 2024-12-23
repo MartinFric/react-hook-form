@@ -9,3 +9,5 @@ export const LABEL_STREET = "Street: ";
 export const LABEL_STREET_NO = "Street number: ";
 export const LABEL_CITY = "City: ";
 export const LABEL_COUNTRY = "Country: ";
+export const LABEL_H_PERSONAL_DETAILS = "Personal Details"
+export const LABEL_H_CONTACT_DETAILS = "Contact Details"

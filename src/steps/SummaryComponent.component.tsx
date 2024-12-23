@@ -1,5 +1,5 @@
 import { Box, Button, Grid2, Typography } from "@mui/material"
-import { BACK_BUTTON, LABEL_CITY, LABEL_COUNTRY, LABEL_DOB, LABEL_EMAIL, LABEL_LASTNAME, LABEL_NAME, LABEL_STREET, LABEL_STREET_NO, SUBMIT_BUTTON } from "../configuration/texts"
+import { BACK_BUTTON, LABEL_CITY, LABEL_COUNTRY, LABEL_DOB, LABEL_EMAIL, LABEL_H_CONTACT_DETAILS, LABEL_H_PERSONAL_DETAILS, LABEL_LASTNAME, LABEL_NAME, LABEL_STREET, LABEL_STREET_NO, SUBMIT_BUTTON } from "../configuration/texts"
 import { UserDetails } from "../App";
 import dayjs from "dayjs";
 
@@ -27,7 +27,7 @@ export function Summary(
               color="textSecondary"
               component="span"
             >
-              Personal Details
+              {LABEL_H_PERSONAL_DETAILS}
             </Typography>
           </Box>
         </Grid2>
@@ -46,7 +46,7 @@ export function Summary(
               color="textSecondary"
               component="span"
             >
-              Contact Details
+              {LABEL_H_CONTACT_DETAILS}
             </Typography>
           </Box>
         </Grid2>
