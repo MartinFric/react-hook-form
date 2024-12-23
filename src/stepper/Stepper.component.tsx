@@ -12,8 +12,8 @@ export const Stepper = (props: IProps) => {
       { STEPS.map((step, idx) => {
         const className = `stepper ${props.activeStep === idx ? 'active' : ''}`;
         return (
-        <Grid2 key={idx} size={4}> 
-          <Box sx={{width: '100%'}} style={{textAlign: 'center'}} className={className}>
+        <Grid2 key={idx} size={4} className={className}> 
+          <Box sx={{width: '100%'}} style={{textAlign: 'center'}} >
           <Typography
                 variant="body2"
                 color="textPrimary"

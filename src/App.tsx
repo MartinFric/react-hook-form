@@ -4,6 +4,7 @@ import { Stepper } from './stepper/Stepper.component';
 import { Grid2 } from '@mui/material'
 import { PersonalDetails, UserInfo } from './steps/PersonalDetails.component';
 import { ContactDetails, ContactInfo } from './steps/ContactDetails.component';
+import { Summary } from './steps/SummaryComponent.component';
 
 export class UserDetails {
   personalDetails: UserInfo = new UserInfo();
@@ -38,6 +39,7 @@ function App() {
       </Grid2>
       {activeStep === 0 && (<PersonalDetails updateFormData={updateFormData} handleNext={handleNext} formData={data} ref={ref}/>)}
       {activeStep === 1 && (<ContactDetails updateFormData={updateFormData} handleNext={handleNext} handleBack={handleBack} formData={data}/>)}
+      {activeStep === 2 && (<Summary handleBack={handleBack} formData={data}/>)}
       </div>
       <div>
         </div>

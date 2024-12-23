@@ -1,5 +1,5 @@
 import { Box, Button, Grid2, Input, MenuItem, Select } from "@mui/material"
-import { BACK_BUTTON, NEXT_BUTTON } from "../configuration/texts"
+import { BACK_BUTTON, LABEL_CITY, LABEL_COUNTRY, LABEL_EMAIL, LABEL_STREET, LABEL_STREET_NO, NEXT_BUTTON } from "../configuration/texts"
 import { Controller, useForm } from 'react-hook-form';
 import { UserDetails } from "../App";
 import { STEPS_INPUTS } from "../configuration/steps";
@@ -57,25 +57,25 @@ export function ContactDetails(
     <>
 
       <form onSubmit={handleSubmit(onSubmit)} style={{ width: '100%' }}>
-        <Grid2 sx={{ width: '100%', padding: '5px', borderColor: '#1769aa!important', borderRight: '1px solid', borderLeft: '1px solid', borderBottom: '1px solid' }} container direction="row" columns={12} spacing={0.5} >
-          <Grid2 size={2}><Box>Street:</Box></Grid2>
+        <Grid2 sx={{ width: '100%', padding: '5px', borderColor: '#1769aa!important', borderRight: '1px solid', borderLeft: '1px solid', borderBottom: '1px solid'}} container direction="row" columns={12} spacing={0.5} >
+          <Grid2 size={2}><Box>{LABEL_STREET}</Box></Grid2>
           <Grid2 size={8}><Box><Input type="text" {...register('street', { ...STEPS_INPUTS.contactDetails.street })} style={{ width: '90%' }}></Input></Box></Grid2>
           <Grid2 size={2}><Box>{errors.street && <span className="errorMsg">{errors.street.message}</span>}</Box></Grid2>
 
-          <Grid2 size={2}><Box>Street Number:</Box></Grid2>
+          <Grid2 size={2}><Box>{LABEL_STREET_NO}</Box></Grid2>
           <Grid2 size={8}><Box><Input type="text" {...register('streetNo', { ...STEPS_INPUTS.contactDetails.streetNo })} style={{ width: '30%' }}></Input></Box></Grid2>
           <Grid2 size={2}><Box>{errors.streetNo && <span className="errorMsg">{errors.streetNo.message}</span>}</Box></Grid2>
 
-          <Grid2 size={2}><Box>City:</Box></Grid2>
+          <Grid2 size={2}><Box>{LABEL_CITY}</Box></Grid2>
           <Grid2 size={8}><Box><Input type="text" {...register('city', { ...STEPS_INPUTS.contactDetails.city })} style={{ width: '30%' }}></Input></Box></Grid2>
           <Grid2 size={2}><Box>{errors.city && <span className="errorMsg">{errors.city.message}</span>}</Box></Grid2>
 
-          <Grid2 size={2}><Box>Country:</Box></Grid2>
+          <Grid2 size={2}><Box>{LABEL_COUNTRY}</Box></Grid2>
           <Grid2 size={8}>
             <Box>
             <Controller
                     control={control}
-                    {...register('country')}
+                    name="country"
                     render={({ field: {onChange, value} }) =>
                     (<Select type="text" style={{ width: '30%' }} onChange={onChange} value={props.formData.contactDetails.country || value}> 
                       { COUNTRIES.map((country, idx) => (<MenuItem key={idx} value={country}>{country}</MenuItem>)) }
@@ -88,7 +88,7 @@ export function ContactDetails(
           </Grid2>
           <Grid2 size={2}><Box>{errors.country && <span className="errorMsg">{errors.country.message}</span>}</Box></Grid2>
 
-          <Grid2 size={2}><Box>Country:</Box></Grid2>
+          <Grid2 size={2}><Box>{LABEL_EMAIL}</Box></Grid2>
           <Grid2 size={8}><Box><Input type="text" {...register('email', { ...STEPS_INPUTS.contactDetails.email })} style={{ width: '30%' }}></Input></Box></Grid2>
           <Grid2 size={2}><Box>{errors.email && <span className="errorMsg">{errors.email.message}</span>}</Box></Grid2>
           
