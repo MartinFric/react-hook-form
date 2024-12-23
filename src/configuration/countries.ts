@@ -1,0 +1,1 @@
+export const COUNTRIES: string[] = ["Slovakia", "Czech Republic"];
