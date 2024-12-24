@@ -5,7 +5,6 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayJS'
 import { UserDetails } from "../App";
 import { STEPS_INPUTS } from "../configuration/steps";
-import { forwardRef } from "react";
 
 export class UserInfo {
   firstName = "";
@@ -19,7 +18,7 @@ interface Props {
   handleNext: () => void
 }
 
-export const PersonalDetails = forwardRef<HTMLDivElement, Props>(({formData, updateFormData, handleNext}, ref) => {
+export const PersonalDetails = ({formData, updateFormData, handleNext}: Props) => {
   const {
     register,
     control,
@@ -38,7 +37,6 @@ export const PersonalDetails = forwardRef<HTMLDivElement, Props>(({formData, upd
   }
   return (
     <>
-      <div ref={ref}>
         <form onSubmit={handleSubmit(onSubmit)} style={{ width: '100%' }} >
           <Grid2 sx={{ width: '100%', padding: '5px', borderColor: '#1769aa!important', borderRight: '1px solid', borderLeft: '1px solid', borderBottom: '1px solid' }} container direction="row" columns={12} spacing={0.5} >
             <Grid2 size={2}><Box>{LABEL_NAME}</Box></Grid2>
@@ -72,8 +70,6 @@ export const PersonalDetails = forwardRef<HTMLDivElement, Props>(({formData, upd
             </Grid2>
           </Grid2>
         </form>
-      </div>
-
     </>
   )
-})
+}

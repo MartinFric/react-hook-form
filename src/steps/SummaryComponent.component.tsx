@@ -37,7 +37,7 @@ export function Summary(
         <Grid2 size={4}><Box>{personalDetails.lastName}</Box></Grid2>
 
         <Grid2 size={2}><Box color="#1769aa"><b>{LABEL_DOB}</b></Box></Grid2>
-        <Grid2 size={10}><Box>{dayjs(personalDetails.dateOfBirth).toString()}</Box></Grid2>
+        <Grid2 size={10}><Box>{dayjs(personalDetails.dateOfBirth).format('DD/MM/YYYY')}</Box></Grid2>
         <Grid2 size={12}>&nbsp;</Grid2>
         <Grid2 size={12}>
           <Box>

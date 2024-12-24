@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import './App.scss'
 import { Stepper } from './stepper/Stepper.component';
 import { Grid2 } from '@mui/material'
@@ -14,7 +14,6 @@ export class UserDetails {
 function App() {
   const [activeStep, setActiveStep] = useState(0);
   const [data, setData] = useState(new UserDetails);
-  const ref = useRef<HTMLDivElement | null>(null);
   
 
   const handleBack = () => {
@@ -37,7 +36,7 @@ function App() {
         spacing={0.5}>
         <Stepper activeStep={activeStep}/>
       </Grid2>
-      {activeStep === 0 && (<PersonalDetails updateFormData={updateFormData} handleNext={handleNext} formData={data} ref={ref}/>)}
+      {activeStep === 0 && (<PersonalDetails updateFormData={updateFormData} handleNext={handleNext} formData={data}/>)}
       {activeStep === 1 && (<ContactDetails updateFormData={updateFormData} handleNext={handleNext} handleBack={handleBack} formData={data}/>)}
       {activeStep === 2 && (<Summary handleBack={handleBack} formData={data}/>)}
       </div>
