@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { Admin, Resource } from "react-admin";
+import { ContactInfo } from "./components/create/steps/ContactDetails.component";
+import { UserInfo } from "./components/create/steps/PersonalDetails.component";
+import { UserCreate } from "./components/create/create.component";
+import { UserList } from "./components/list/list.component";
+import { MOCK_DATA } from "./data/mock.data";
+import fakeDataProvider from 'ra-data-fakerest'
 import './App.scss'
-import { Stepper } from './stepper/Stepper.component';
-import { Grid2 } from '@mui/material'
-import { PersonalDetails, UserInfo } from './steps/PersonalDetails.component';
-import { ContactDetails, ContactInfo } from './steps/ContactDetails.component';
-import { Summary } from './steps/SummaryComponent.component';
+
 
 export class UserDetails {
   personalDetails: UserInfo = new UserInfo();
@@ -12,36 +14,11 @@ export class UserDetails {
 }
 
 function App() {
-  const [activeStep, setActiveStep] = useState(0);
-  const [data, setData] = useState(new UserDetails);
-  
-
-  const handleBack = () => {
-    setActiveStep(activeStep-1)
-  }
-
-  const handleNext = () => {
-    setActiveStep(activeStep+1) 
-  }
-
-  const updateFormData = (data: UserDetails) => {
-    setData((prevData) => { 
-      return ({...prevData, ...data})
-  }) }
-
   return (
     <>
-      <div className="App">
-      <Grid2 container direction="row"
-        spacing={0.5}>
-        <Stepper activeStep={activeStep}/>
-      </Grid2>
-      {activeStep === 0 && (<PersonalDetails updateFormData={updateFormData} handleNext={handleNext} formData={data}/>)}
-      {activeStep === 1 && (<ContactDetails updateFormData={updateFormData} handleNext={handleNext} handleBack={handleBack} formData={data}/>)}
-      {activeStep === 2 && (<Summary handleBack={handleBack} formData={data}/>)}
-      </div>
-      <div>
-        </div>
+      <Admin title="Zurich interview" dataProvider={fakeDataProvider(MOCK_DATA)}>
+        <Resource name="users" list={UserList} create={UserCreate}/>
+      </Admin>
     </>
   )
 }

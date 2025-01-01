@@ -1,9 +1,9 @@
 import { Box, Button, Grid2, Input, MenuItem, Select } from "@mui/material"
-import { BACK_BUTTON, LABEL_CITY, LABEL_COUNTRY, LABEL_EMAIL, LABEL_STREET, LABEL_STREET_NO, NEXT_BUTTON } from "../configuration/texts"
 import { Controller, useForm } from 'react-hook-form';
-import { UserDetails } from "../App";
-import { STEPS_INPUTS } from "../configuration/steps";
-import { COUNTRIES } from "../configuration/countries";
+import { UserDetails } from "../create.component";
+import { BACK_BUTTON, LABEL_CITY, LABEL_COUNTRY, LABEL_EMAIL, LABEL_STREET, LABEL_STREET_NO, NEXT_BUTTON } from "../../../configuration/texts";
+import { STEPS_INPUTS } from "../../../configuration/steps";
+import { COUNTRIES } from "../../../configuration/countries";
 
 export class ContactInfo {
   street = "";

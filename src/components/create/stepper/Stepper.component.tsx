@@ -1,5 +1,5 @@
 import { Box, Grid2, Typography } from "@mui/material";
-import { STEPS } from "../configuration/steps";
+import { STEPS } from "../../../configuration/steps";
 
 interface IProps {
   activeStep: number;

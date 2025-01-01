@@ -1,18 +1,38 @@
 import { Box, Button, Grid2, Typography } from "@mui/material"
-import { BACK_BUTTON, LABEL_CITY, LABEL_COUNTRY, LABEL_DOB, LABEL_EMAIL, LABEL_H_CONTACT_DETAILS, LABEL_H_PERSONAL_DETAILS, LABEL_LASTNAME, LABEL_NAME, LABEL_STREET, LABEL_STREET_NO, SUBMIT_BUTTON } from "../configuration/texts"
-import { UserDetails } from "../App";
 import dayjs from "dayjs";
+import { UserDetails } from "../create.component";
+import { BACK_BUTTON, LABEL_CITY, LABEL_COUNTRY, LABEL_DOB, LABEL_EMAIL, LABEL_H_CONTACT_DETAILS, LABEL_H_PERSONAL_DETAILS, LABEL_LASTNAME, LABEL_NAME, LABEL_STREET, LABEL_STREET_NO, SUBMIT_BUTTON } from "../../../configuration/texts";
+import { useCreate, useNotify, useRecordContext, useRedirect } from 'react-admin';
 
 export function Summary(
   props: {
     formData: UserDetails,
     handleBack: () => void,
   }) {
+  const record = useRecordContext();
+  const redirect = useRedirect();
+  const notify = useNotify();
+  const [create, { isPending }] = useCreate();
 
   const { formData: { personalDetails, contactDetails } } = props;
 
   const handleBack = () => {
     props.handleBack()
+  }
+
+  const handleCreate = () => {
+    create('users', {
+      data: {
+        id: record?.id,
+        personalDetails: {
+          ...personalDetails,
+          dateOfBirth: dayjs(personalDetails.dateOfBirth).format('DD/MM/YYYY')
+        },
+        contactDetails: { ...contactDetails }
+      }
+    })
+    notify(`Post "${personalDetails.firstName} ${personalDetails.lastName}" saved!`);
+    redirect('/users')
   }
 
   return (
@@ -63,7 +83,7 @@ export function Summary(
         <Grid2 size={10}><Box>{contactDetails.email}</Box></Grid2>
         <Grid2 sx={{ width: '100%' }} container columns={2}>
           <Grid2 size={1}><Button variant="outlined" onClick={handleBack} sx={{ minWidth: '100%', marginTop: '20px' }}>{BACK_BUTTON}</Button></Grid2>
-          <Grid2 size={1}><Button variant="contained" onClick={() => alert('user created')} sx={{ minWidth: '100%', marginTop: '20px' }}>{SUBMIT_BUTTON}</Button></Grid2>
+          <Grid2 size={1}><Button disabled={isPending} variant="contained" onClick={handleCreate} sx={{ minWidth: '100%', marginTop: '20px' }}>{SUBMIT_BUTTON}</Button></Grid2>
         </Grid2>
       </Grid2>
     </>

@@ -1,10 +1,10 @@
 import { Box, Button, Grid2, Input } from "@mui/material"
-import { LABEL_DOB, LABEL_LASTNAME, LABEL_NAME, NEXT_BUTTON } from "../configuration/texts"
 import { useForm, Controller } from 'react-hook-form';
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayJS'
-import { UserDetails } from "../App";
-import { STEPS_INPUTS } from "../configuration/steps";
+import { UserDetails } from "../create.component";
+import { LABEL_DOB, LABEL_LASTNAME, LABEL_NAME, NEXT_BUTTON } from "../../../configuration/texts";
+import { STEPS_INPUTS } from "../../../configuration/steps";
 
 export class UserInfo {
   firstName = "";
